@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed | خبرخوان هوشمند</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Farsi and English -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <header class="glass">
+        <div class="container header-content">
+            <div class="logo">
+                <i data-lucide="rss"></i>
+                <h1>News Feed</h1>
+            </div>
+            <div class="tabs">
+                <button class="tab-link active" data-tab="feed">خبرخوان</button>
+                <button class="tab-link" data-tab="favorites">علاقه‌مندی‌ها</button>
+                <button class="tab-link" data-tab="readlater">بخوانم!</button>
+            </div>
+            <div class="controls">
+                <select id="categoryFilter" class="glass">
+                    <option value="all">همه دسته‌ها</option>
+                </select>
+                <button id="settingsBtn" class="glass icon-btn" title="تنظیمات">
+                    <i data-lucide="settings"></i>
+                </button>
+                <button id="refreshBtn" class="glass icon-btn" title="به‌روز‌رسانی">
+                    <i data-lucide="refresh-cw"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <aside id="settingsSidebar" class="sidebar glass">
+        <div class="sidebar-header">
+            <h2 id="settingsTitle">تنظیمات</h2>
+            <button id="closeSettings" class="icon-btn"><i data-lucide="x"></i></button>
+        </div>
+
+        <div class="setting-group">
+            <label id="langLabel">زبان برنامه و اخبار</label>
+            <select id="langSelect" class="glass">
+                <option value="fa">Persian | فارسی</option>
+                <option value="en">English | انگلیسی</option>
+                <option value="de">German | آلمانی</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <label id="themeLabel">تم برنامه</label>
+            <div class="theme-options">
+                <button class="theme-btn dark active" data-theme="dark" title="Dark"></button>
+                <button class="theme-btn slate" data-theme="slate" title="Slate"></button>
+                <button class="theme-btn light" data-theme="light" title="Light"></button>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <label id="fontSizeLabel">اندازه فونت</label>
+            <div class="font-control">
+                <input type="range" id="fontSizeRange" min="14" max="22" value="16" step="1">
+                <span id="fontSizeDisplay">16px</span>
+            </div>
+        </div>
+
+        <div class="sidebar-header" style="margin-top: 2rem;">
+            <h2 id="sourcesTitle">مدیریت منابع</h2>
+        </div>
+        <div id="sourceList" class="source-list">
+            <!-- Sources will be injected here -->
+        </div>
+    </aside>
+
+    <main class="container">
+        <div id="newsGrid" class="news-grid">
+            <!-- News cards will be injected here -->
+        </div>
+        <div id="loadMoreTrigger" class="load-more">
+            <div class="dot-flashing"></div>
+        </div>
+    </main>
+
+    <footer class="glass">
+        <div class="container">
+            <p>&copy; 2026 خبرخوان حرفه‌ای - تمام حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
