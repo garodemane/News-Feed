@@ -3,24 +3,24 @@
     --primary-dark: #2563eb;
     --bg: #0f172a;
     --card-bg: rgba(30, 41, 59, 0.7);
-    --text: #f8fafc;
-    --text-dim: #94a3b8;
-    --border: rgba(255, 255, 255, 0.1);
-    --glass: rgba(15, 23, 42, 0.8);
-    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --text: #ffffff;
+    --text-dim: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.2);
+    --glass: rgba(15, 23, 42, 0.9);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     --font-base: 16px;
 }
 
 :root[data-theme="slate"] {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
+    --primary: #818cf8;
+    --primary-dark: #6366f1;
     --bg: #1e293b;
     --card-bg: rgba(51, 65, 85, 0.7);
-    --text: #f1f5f9;
-    --text-dim: #94a3b8;
-    --border: rgba(255, 255, 255, 0.1);
-    --glass: rgba(15, 23, 42, 0.8);
-    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --text: #ffffff;
+    --text-dim: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.2);
+    --glass: rgba(15, 23, 42, 0.9);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     --font-base: 16px;
 }
 
@@ -132,11 +132,80 @@ header {
 }
 
 .icon-btn {
+    display: flex;
+    align-items: center;
     padding: 0.5rem;
     width: 40px;
     height: 40px;
     justify-content: center;
     border-radius: 8px;
+    color: var(--text);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn svg,
+.btn-icon svg,
+.icon-btn i,
+.btn-icon i {
+    stroke: currentColor !important;
+    color: inherit !important;
+    display: block;
+}
+
+.lucene-icon,
+.lucide {
+    stroke: currentColor !important;
+}
+
+/* Ensure active states still work */
+.fav-btn.active svg {
+    stroke: #ef4444 !important;
+    fill: #ef4444 !important;
+}
+
+.later-btn.active svg {
+    stroke: var(--primary) !important;
+    fill: var(--primary) !important;
+}
+
+/* Ensure active states still work */
+.fav-btn.active svg {
+    stroke: #ef4444 !important;
+    fill: #ef4444 !important;
+}
+
+.later-btn.active svg {
+    stroke: var(--primary) !important;
+    fill: var(--primary) !important;
+}
+
+select.glass {
+    color: var(--text) !important;
+    background-color: var(--glass);
+    border: 1px solid var(--border);
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: left 0.5rem center !important;
+}
+
+[dir="ltr"] select.glass {
+    background-position: right 0.5rem center;
+}
+
+select.glass option {
+    background: var(--bg);
+    color: var(--text);
 }
 
 /* Sidebar */
@@ -386,8 +455,14 @@ input:checked+.slider:before {
 .btn-icon {
     background: none;
     border: none;
-    padding: 0.4rem;
+    padding: 0.6rem;
     border-radius: 50%;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
 .btn-icon:hover {
